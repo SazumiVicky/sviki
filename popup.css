@@ -1,0 +1,151 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.popup {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 2px solid #1A1A1A;
+    box-shadow: 4px 4px 0 #1A1A1A;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.popup-overlay.active .popup {
+    transform: scale(1);
+    opacity: 1;
+    animation: popIn 0.3s ease forwards;
+}
+
+.popup h3 {
+    margin-bottom: 1rem;
+    color: #1A1A1A;
+}
+
+.popup p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.popup-btn {
+    background: #4ADE80;
+    color: #1A1A1A;
+    border: 2px solid #1A1A1A;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.popup-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0 #1A1A1A;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+.popup-overlay.closing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.popup-overlay.closing .popup {
+    animation: popOut 0.3s ease forwards;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.popup-btn-cancel {
+    background: #fff;
+    color: #1A1A1A;
+}
+
+.popup-btn-confirm {
+    background: #FF3366;
+    color: #fff;
+}
+
+.popup-btn-cancel:hover,
+.popup-btn-confirm:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0 #1A1A1A;
+}
+
+.sviki-btn-book {
+    transition: all 0.3s ease;
+}
+
+.sviki-btn-book.booked {
+    background-color: #4ADE80;
+    color: white;
+}
+
+.sviki-btn-book.booked:hover {
+    background-color: #3aa76a;
+}

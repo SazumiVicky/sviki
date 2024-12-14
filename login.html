@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SVIKI Travel</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="sviki-header">
+        <nav class="sviki-nav">
+            <a href="index.html" class="sviki-logo" style="text-decoration: none;">SVIKI Travel</a>
+            <div class="sviki-menu">
+                <a href="index.html"><i class="ri-home-line"></i>Beranda</a>
+                <a href="index.html#destinations"><i class="ri-map-pin-line"></i>Destinasi</a>
+                <a href="index.html#booking"><i class="ri-calendar-line"></i>Booking</a>
+                <a href="index.html#reviews"><i class="ri-star-line"></i>Review</a>
+            </div>
+            <div class="sviki-mobile-menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sviki-mobile-menu">
+        <div class="sviki-mobile-menu-close">
+            <i class="ri-close-line"></i>
+        </div>
+        <a href="index.html"><i class="ri-home-line"></i>Beranda</a>
+        <a href="index.html#destinations"><i class="ri-map-pin-line"></i>Destinasi</a>
+        <a href="index.html#booking"><i class="ri-calendar-line"></i>Booking</a>
+        <a href="index.html#reviews"><i class="ri-star-line"></i>Review</a>
+    </div>
+
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-card">
+                <h2>Selamat Datang Kembali</h2>
+                <p class="login-desc">Silakan login untuk melanjutkan perjalanan Anda</p>
+                
+                <form class="login-form">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Ingat saya</span>
+                        </label>
+                        <a href="#" class="forgot-password">Lupa password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="ri-login-circle-line"></i>
+                        Masuk
+                    </button>
+                </form>
+                
+                <div class="login-divider">
+                    <span>atau masuk dengan</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="ri-google-fill"></i>
+                        Google
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="ri-facebook-fill"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <p class="register-link">
+                    Belum punya akun? <a href="#">Daftar sekarang</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+    <script>
+    document.querySelector('.login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        if (email && password) {
+            window.location.href = '/';
+        }
+    });
+    document.querySelectorAll('.social-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = '/';
+        });
+    });
+    </script>
+</body>
+</html>

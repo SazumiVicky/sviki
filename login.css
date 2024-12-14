@@ -1,0 +1,237 @@
+.login-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 1rem;
+    background-color: #f8f8f8;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.login-card {
+    background: var(--background);
+    border: var(--neo-border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 0.6s ease-out;
+}
+
+.login-card h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.login-desc {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-form .input-wrapper {
+    display: flex;
+    align-items: center;
+    border: var(--neo-border);
+    border-radius: var(--border-radius-sm);
+    padding: 0 1rem;
+    background: #f8f8f8;
+    transition: all 0.3s ease;
+}
+
+.login-form .input-wrapper:focus-within {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--box-shadow);
+}
+
+.login-form .input-wrapper i {
+    color: #666;
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+}
+
+.login-form .input-wrapper input {
+    width: 100%;
+    padding: 0.8rem 0;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.login-form .input-wrapper input:focus {
+    outline: none;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--secondary-color);
+}
+
+.login-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--background);
+    border: var(--neo-border);
+    padding: 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--box-shadow);
+}
+
+.login-btn i {
+    font-size: 1.2rem;
+}
+
+.login-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.login-divider::before {
+    left: 0;
+}
+
+.login-divider::after {
+    right: 0;
+}
+
+.login-divider span {
+    background: var(--background);
+    padding: 0 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border: var(--neo-border);
+    border-radius: var(--border-radius-sm);
+    background: var(--background);
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--box-shadow);
+}
+
+.social-btn.google {
+    color: #DB4437;
+}
+
+.social-btn.facebook {
+    color: #4267B2;
+}
+
+.register-link {
+    text-align: center;
+    color: #666;
+}
+
+.register-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .login-section {
+        padding: 80px 1rem;
+    }
+
+    .login-card {
+        padding: 2rem;
+    }
+
+    .login-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

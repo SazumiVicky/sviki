@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVIKI Travel - Booking Tempat Wisata</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header class="sviki-header">
+        <nav class="sviki-nav">
+            <div class="sviki-logo">SVIKI Travel</div>
+            <div class="sviki-menu">
+                <a href="#destinasi"><i class="ri-map-pin-line"></i> Destinasi</a>
+                <a href="#booking"><i class="ri-calendar-line"></i> Booking</a>
+                <a href="#review"><i class="ri-star-line"></i> Review</a>
+                <a href="/login.html"><i class="ri-user-line"></i> Login</a>
+            </div>
+            <div class="sviki-mobile-menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </nav>
+    </header>
+    <div class="sviki-mobile-menu">
+        <div class="sviki-mobile-menu-close">
+            <i class="ri-close-line"></i>
+        </div>
+        <a href="#destinasi"><i class="ri-map-pin-line"></i> Destinasi</a>
+        <a href="#booking"><i class="ri-calendar-line"></i> Booking</a>
+        <a href="#review"><i class="ri-star-line"></i> Review</a>
+        <a href="/login.html"><i class="ri-user-line"></i> Login</a>
+    </div>
+
+    <main>
+        <section class="sviki-hero">
+            <div class="sviki-hero-content">
+                <h1>Jelajahi Keindahan Indonesia</h1>
+                <p class="sviki-hero-desc">Temukan destinasi wisata terbaik di Indonesia. Dari pantai eksotis hingga warisan budaya yang menakjubkan.</p>
+                
+                <div class="sviki-search-box">
+                    <div class="sviki-search-wrapper">
+                        <div class="sviki-search-input">
+                            <i class="ri-search-line search-icon"></i>
+                            <input type="text" placeholder="Cari destinasi wisata...">
+                        </div>
+                        <button class="sviki-btn-primary">
+                            <i class="ri-search-line"></i> Explore
+                        </button>
+                    </div>
+                    <div class="sviki-quick-links">
+                        <span>Popular:</span>
+                        <a href="#" class="quick-link">Bali</a>
+                        <a href="#" class="quick-link">Bromo</a>
+                        <a href="#" class="quick-link">Raja Ampat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinasi" class="sviki-destinations">
+            <div class="sviki-container">
+                <h2>Destinasi Populer</h2>
+                <div class="sviki-cards">
+                    <article class="sviki-card">
+                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1623043059514-15427aaa32d7?q=80&w=1785&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                        <div class="sviki-card-content">
+                            <h3>Pantai Kuta</h3>
+                            <p><i class="ri-map-pin-line"></i> Bali, Indonesia</p>
+                            <div class="sviki-rating">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                            <button class="sviki-btn-book">
+                                <i class="ri-calendar-check-line"></i> Booking Sekarang
+                            </button>
+                        </div>
+                    </article>
+                    <article class="sviki-card">
+                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1596402184320-417e7178b2cd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                        <div class="sviki-card-content">
+                            <h3>Borobudur</h3>
+                            <p><i class="ri-map-pin-line"></i> Yogyakarta, Indonesia</p>
+                            <div class="sviki-rating">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <button class="sviki-btn-book">
+                                <i class="ri-calendar-check-line"></i> Booking Sekarang
+                            </button>
+                        </div>
+                    </article>
+                    <article class="sviki-card">
+                        <div class="sviki-card-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1674832821491-cb3bf3f96a42?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                        <div class="sviki-card-content">
+                            <h3>Gunung Bromo</h3>
+                            <p><i class="ri-map-pin-line"></i> Jawa Timur, Indonesia</p>
+                            <div class="sviki-rating">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <button class="sviki-btn-book">
+                                <i class="ri-calendar-check-line"></i> Booking Sekarang
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="booking" class="sviki-booking">
+            <div class="sviki-container">
+                <div class="sviki-booking-content">
+                    <h2>Pesan Tiket Wisata Sekarang</h2>
+                    <p class="booking-desc">Nikmati kemudahan booking tiket wisata dengan harga terbaik</p>
+                    
+                    <form class="sviki-booking-form">
+                        <div class="form-group">
+                            <label for="destination">Pilih Destinasi</label>
+                            <div class="input-wrapper">
+                                <i class="ri-map-pin-line"></i>
+                                <input type="text" id="destination" placeholder="Cth: Pantai Kuta, Bali">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visit-date">Tanggal Kunjungan</label>
+                            <div class="input-wrapper">
+                                <i class="ri-calendar-line"></i>
+                                <input type="date" id="visit-date">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visit-time">Jam Kunjungan</label>
+                            <div class="input-wrapper">
+                                <i class="ri-time-line"></i>
+                                <input type="time" id="visit-time">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visitors">Jumlah Pengunjung</label>
+                            <div class="input-wrapper">
+                                <i class="ri-group-line"></i>
+                                <input type="number" id="visitors" placeholder="Jumlah orang" min="1">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="sviki-btn-book">
+                            <i class="ri-calendar-check-line"></i> Pesan Sekarang
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="review" class="sviki-reviews">
+            <div class="sviki-container">
+                <h2>Reviews</h2>
+                <div class="sviki-reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" class="review-avatar">
+                            <div class="review-info">
+                                <h3>John Doe</h3>
+                                <div class="review-rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Pengalaman yang luar biasa di Pantai Kuta! Pemandangan sunset yang menakjubkan dan pelayanan yang sangat baik."</p>
+                        <p class="review-destination"><i class="ri-map-pin-line"></i> Pantai Kuta, Bali</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" class="review-avatar">
+                            <div class="review-info">
+                                <h3>Jane Smith</h3>
+                                <div class="review-rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Borobudur sangat menakjubkan! Sejarah dan arsitekturnya membuat saya terpesona. Sangat direkomendasikan!"</p>
+                        <p class="review-destination"><i class="ri-map-pin-line"></i> Borobudur, Yogyakarta</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User" class="review-avatar">
+                            <div class="review-info">
+                                <h3>David Wilson</h3>
+                                <div class="review-rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Sunrise di Gunung Bromo adalah pengalaman yang tak terlupakan. Pemandangan yang spektakuler!"</p>
+                        <p class="review-destination"><i class="ri-map-pin-line"></i> Gunung Bromo, Jawa Timur</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User" class="review-avatar">
+                            <div class="review-info">
+                                <h3>Sarah Johnson</h3>
+                                <div class="review-rating">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Raja Ampat benar-benar surga bawah laut! Snorkeling dengan pemandangan terumbu karang yang indah. Pengalaman tak terlupakan!"</p>
+                        <p class="review-destination"><i class="ri-map-pin-line"></i> Raja Ampat, Papua Barat</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sviki-footer">
+        <div class="sviki-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">SVIKI Travel</h3>
+                    <p class="footer-desc">Jelajahi keindahan Indonesia bersama kami. Temukan pengalaman perjalanan yang tak terlupakan.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="ri-instagram-line"></i></a>
+                        <a href="#" class="social-link"><i class="ri-facebook-line"></i></a>
+                        <a href="#" class="social-link"><i class="ri-twitter-line"></i></a>
+                        <a href="#" class="social-link"><i class="ri-youtube-line"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Destinasi</h4>
+                        <ul>
+                            <li><a href="#">Bali</a></li>
+                            <li><a href="#">Yogyakarta</a></li>
+                            <li><a href="#">Jawa Timur</a></li>
+                            <li><a href="#">Raja Ampat</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Layanan</h4>
+                        <ul>
+                            <li><a href="#">Booking Tiket</a></li>
+                            <li><a href="#">Paket Wisata</a></li>
+                            <li><a href="#">Tour Guide</a></li>
+                            <li><a href="#">Akomodasi</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Kontak</h4>
+                        <ul>
+                            <li><i class="ri-map-pin-line"></i> Jakarta, Indonesia</li>
+                            <li><i class="ri-phone-line"></i> +62 123 4567 890</li>
+                            <li><i class="ri-mail-line"></i> info@svikitravel.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sazumi Viki. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
