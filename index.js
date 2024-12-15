@@ -65,16 +65,28 @@ function scrollToDestination(card) {
 
 function searchDestination() {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    if (searchTerm) {
-        const foundCard = Array.from(destinationCards).find(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            return title.includes(searchTerm);
-        });
+    const activeCategory = document.querySelector('.quick-link.active')?.dataset.category || 'all';
 
-        if (foundCard) {
-            scrollToDestination(foundCard);
+    destinationCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const category = card.dataset.category;
+        const matchesSearch = searchTerm === '' || title.includes(searchTerm);
+        const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+        if (matchesSearch && matchesCategory) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
         }
-    }
+    });
 }
 
 searchButton.addEventListener('click', searchDestination);
@@ -353,5 +365,59 @@ document.addEventListener('mousemove', (e) => {
     if (e.clientY <= 60) {
         header.classList.remove('hide');
         header.classList.add('show');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryLinks = document.querySelectorAll('.quick-link');
+    const destinationCards = document.querySelectorAll('.sviki-card');
+    
+    function filterDestinations(category) {
+        destinationCards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+
+            const category = this.dataset.category;
+            filterDestinations(category);
+        });
+    });
+});
+
+document.querySelector('.sviki-btn-primary').addEventListener('click', function() {
+    const destinationSection = document.getElementById('destinasi');
+    if (destinationSection) {
+        const headerOffset = 70;
+        const elementPosition = destinationSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        const searchTerm = document.querySelector('.sviki-search-input input').value.trim().toLowerCase();
+        if (searchTerm) {
+            searchDestination();
+        }
     }
 });

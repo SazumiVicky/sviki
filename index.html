@@ -50,10 +50,11 @@
                         </button>
                     </div>
                     <div class="sviki-quick-links">
-                        <span>Popular:</span>
-                        <a href="#" class="quick-link">Bali</a>
-                        <a href="#" class="quick-link">Bromo</a>
-                        <a href="#" class="quick-link">Raja Ampat</a>
+                        <span>Category:</span>
+                        <a href="#" class="quick-link" data-category="beach">Pantai</a>
+                        <a href="#" class="quick-link" data-category="mountain">Gunung</a>
+                        <a href="#" class="quick-link" data-category="culture">Budaya</a>
+                        <a href="#" class="quick-link" data-category="all">Semua</a>
                     </div>
                 </div>
             </div>
@@ -63,11 +64,14 @@
             <div class="sviki-container">
                 <h2>Destinasi Populer</h2>
                 <div class="sviki-cards">
-                    <article class="sviki-card">
-                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1623043059514-15427aaa32d7?q=80&w=1785&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                    <article class="sviki-card" data-category="beach">
+                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1623043059514-15427aaa32d7?q=80&w=1785&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            <span class="category-label">Pantai</span>
+                        </div>
                         <div class="sviki-card-content">
                             <h3>Pantai Kuta</h3>
                             <p><i class="ri-map-pin-line"></i> Bali, Indonesia</p>
+                            <p class="destination-desc">Pantai Kuta adalah salah satu pantai paling terkenal di Bali. Terkenal dengan sunset yang menakjubkan dan ombak yang cocok untuk berselancar.</p>
                             <div class="sviki-rating">
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-fill"></i>
@@ -80,11 +84,14 @@
                             </button>
                         </div>
                     </article>
-                    <article class="sviki-card">
-                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1596402184320-417e7178b2cd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                    <article class="sviki-card" data-category="culture">
+                        <div class="sviki-card-img" style="background-image: url('https://images.unsplash.com/photo-1596402184320-417e7178b2cd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            <span class="category-label">Budaya</span>
+                        </div>
                         <div class="sviki-card-content">
                             <h3>Borobudur</h3>
                             <p><i class="ri-map-pin-line"></i> Yogyakarta, Indonesia</p>
+                            <p class="destination-desc">Candi Borobudur adalah candi Budha terbesar di dunia. Dibangun pada abad ke-8, merupakan warisan budaya yang menakjubkan.</p>
                             <div class="sviki-rating">
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-fill"></i>
@@ -97,11 +104,14 @@
                             </button>
                         </div>
                     </article>
-                    <article class="sviki-card">
-                        <div class="sviki-card-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1674832821491-cb3bf3f96a42?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
+                    <article class="sviki-card" data-category="mountain">
+                        <div class="sviki-card-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1674832821491-cb3bf3f96a42?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            <span class="category-label">Gunung</span>
+                        </div>
                         <div class="sviki-card-content">
                             <h3>Gunung Bromo</h3>
                             <p><i class="ri-map-pin-line"></i> Jawa Timur, Indonesia</p>
+                            <p class="destination-desc">Gunung Bromo adalah gunung berapi aktif yang terkenal dengan pemandangan sunrise yang spektakuler dan lautan pasir yang luas.</p>
                             <div class="sviki-rating">
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-fill"></i>
