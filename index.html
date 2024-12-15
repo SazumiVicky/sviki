@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVIKI Travel - Booking Tempat Wisata</title>
+    <meta name="description" content="Temukan destinasi wisata terbaik di Indonesia. Dari pantai eksotis hingga warisan budaya yang menakjubkan.">
+    <meta name="keywords" content="wisata, Indonesia, pantai, gunung, budaya, wisata alam, wisata kuliner, wisata keluarga, wisata berkelompok">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="popup.css">
@@ -178,7 +180,30 @@
                             <label for="visitors">Jumlah Pengunjung</label>
                             <div class="input-wrapper">
                                 <i class="ri-group-line"></i>
-                                <input type="number" id="visitors" placeholder="Jumlah orang" min="1">
+                                <input type="number" 
+                                       id="visitors" 
+                                       min="1" 
+                                       max="100" 
+                                       value="1" 
+                                       placeholder="Jumlah orang (1-100)">
+                            </div>
+                        </div>
+
+                        <div class="price-calculator">
+                            <div class="calculator-item">
+                                <i class="ri-money-dollar-circle-line"></i>
+                                <span class="calculator-label">Harga per Orang:</span>
+                                <span class="price-per-person">Rp 0</span>
+                            </div>
+                            <div class="calculator-item">
+                                <i class="ri-group-line"></i>
+                                <span class="calculator-label">Jumlah:</span>
+                                <span class="total-visitors">0 Orang</span>
+                            </div>
+                            <div class="calculator-total">
+                                <i class="ri-wallet-3-line"></i>
+                                <span class="calculator-label">Total:</span>
+                                <span class="total-price">Rp 0</span>
                             </div>
                         </div>
 
@@ -304,9 +329,9 @@
                     <div class="footer-section">
                         <h4>Kontak</h4>
                         <ul>
-                            <li><i class="ri-map-pin-line"></i> Jakarta, Indonesia</li>
-                            <li><i class="ri-phone-line"></i> +62 123 4567 890</li>
-                            <li><i class="ri-mail-line"></i> info@svikitravel.com</li>
+                            <li><i class="ri-map-pin-line"></i> Makassar, Indonesia</li>
+                            <li><i class="ri-phone-line"></i> +62 852 3622 6786</li>
+                            <li><i class="ri-mail-line"></i> root@sazumi.moe</li>
                         </ul>
                     </div>
                 </div>

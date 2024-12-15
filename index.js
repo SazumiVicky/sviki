@@ -475,57 +475,65 @@ document.querySelector('.sviki-btn-primary').addEventListener('click', function(
 
 document.addEventListener('DOMContentLoaded', function() {
     const destinationInput = document.getElementById('destination');
+    const visitorsInput = document.getElementById('visitors');
+    const pricePerPersonEl = document.querySelector('.price-per-person');
+    const totalVisitorsEl = document.querySelector('.total-visitors');
+    const totalPriceEl = document.querySelector('.total-price');
     const suggestionsDiv = document.querySelector('.destination-suggestions');
-    
-    const destinations = [
-        {
-            name: 'Pantai Kuta',
+
+    const destinationPrices = {
+        'Pantai Kuta': {
+            price: 150000,
             location: 'Bali, Indonesia'
         },
-        {
-            name: 'Borobudur',
+        'Borobudur': {
+            price: 350000,
             location: 'Yogyakarta, Indonesia'
         },
-        {
-            name: 'Gunung Bromo',
+        'Gunung Bromo': {
+            price: 275000,
             location: 'Jawa Timur, Indonesia'
         }
-    ];
+    };
 
-    destinationInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase();
-        
+    function formatCurrency(number) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(number);
+    }
+
+    function updateCalculator() {
+        const selectedDestination = destinationInput.value.split(',')[0].trim();
+        const visitors = parseInt(visitorsInput.value) || 1;
+        const pricePerPerson = destinationPrices[selectedDestination]?.price || 0;
+        const totalPrice = pricePerPerson * visitors;
+
+        pricePerPersonEl.textContent = formatCurrency(pricePerPerson);
+        totalVisitorsEl.textContent = `${visitors} Orang`;
+        totalPriceEl.textContent = formatCurrency(totalPrice);
+    }
+
+    destinationInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
         if (searchTerm.length > 0) {
-            const filteredDestinations = destinations.filter(dest => 
-                dest.name.toLowerCase().includes(searchTerm) || 
-                dest.location.toLowerCase().includes(searchTerm)
-            );
+            const filteredDestinations = Object.entries(destinationPrices)
+                .filter(([name, data]) => 
+                    name.toLowerCase().includes(searchTerm) || 
+                    data.location.toLowerCase().includes(searchTerm)
+                )
+                .map(([name, data]) => ({
+                    name: name,
+                    location: data.location
+                }));
             showSuggestions(filteredDestinations);
         } else {
             suggestionsDiv.style.display = 'none';
         }
+        updateCalculator();
     });
-
-    function showSuggestions(suggestions) {
-        if (suggestions.length > 0) {
-            const html = suggestions.map(dest => `
-                <div class="suggestion-item">
-                    <i class="ri-map-pin-line"></i>
-                    <div class="suggestion-content">
-                        <div class="suggestion-name">${dest.name}</div>
-                        <div class="suggestion-location">${dest.location}</div>
-                    </div>
-                </div>
-            `).join('');
-            
-            suggestionsDiv.innerHTML = html;
-            suggestionsDiv.classList.add('show');
-            suggestionsDiv.style.display = 'block';
-        } else {
-            suggestionsDiv.classList.remove('show');
-            suggestionsDiv.style.display = 'none';
-        }
-    }
 
     suggestionsDiv.addEventListener('click', function(e) {
         const item = e.target.closest('.suggestion-item');
@@ -534,18 +542,42 @@ document.addEventListener('DOMContentLoaded', function() {
             const location = item.querySelector('.suggestion-location').textContent;
             destinationInput.value = `${name}, ${location}`;
             suggestionsDiv.style.display = 'none';
+            updateCalculator();
         }
     });
 
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.form-group')) {
-            suggestionsDiv.style.display = 'none';
+    visitorsInput.addEventListener('input', function() {
+        const value = parseInt(this.value, 10);
+        if (isNaN(value)) {
+            this.value = 1;
+        } else if (value < 1) {
+            this.value = 1;
+        } else if (value > 100) {
+            this.value = 100;
         }
+        updateCalculator();
     });
 
-    destinationInput.addEventListener('search', function() {
-        if (this.value === '') {
-            suggestionsDiv.style.display = 'none';
-        }
-    });
+    visitorsInput.value = 1;
+    updateCalculator();
 });
+
+function showSuggestions(suggestions) {
+    const suggestionsDiv = document.querySelector('.destination-suggestions');
+    if (suggestions.length > 0) {
+        const html = suggestions.map(dest => `
+            <div class="suggestion-item">
+                <i class="ri-map-pin-line"></i>
+                <div class="suggestion-content">
+                    <div class="suggestion-name">${dest.name}</div>
+                    <div class="suggestion-location">${dest.location}</div>
+                </div>
+            </div>
+        `).join('');
+        
+        suggestionsDiv.innerHTML = html;
+        suggestionsDiv.style.display = 'block';
+    } else {
+        suggestionsDiv.style.display = 'none';
+    }
+}
