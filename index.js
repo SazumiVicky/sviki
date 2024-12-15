@@ -161,14 +161,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     popupOverlay.classList.add('active');
                 }, 10);
+                
+                if (!isBooked) {
+                    bookingButton.innerHTML = `
+                        <i class="ri-calendar-check-line"></i> Pesan Sekarang
+                    `;
+                    bookingButton.classList.remove('booked');
+                }
             }
         });
     }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const bookingButtons = document.querySelectorAll('.sviki-btn-book');
-    
+    const existingPopups = document.querySelectorAll('.popup-overlay');
+    existingPopups.forEach(popup => popup.remove());
+
+    const warningPopup = document.createElement('div');
+    warningPopup.className = 'popup-overlay';
+    warningPopup.innerHTML = `
+        <div class="popup">
+            <h3>Perhatian</h3>
+            <p>Mohon lengkapi semua data pemesanan</p>
+            <button class="popup-btn">OK</button>
+        </div>
+    `;
+    document.body.appendChild(warningPopup);
+
     const confirmationPopup = document.createElement('div');
     confirmationPopup.className = 'popup-overlay';
     confirmationPopup.innerHTML = `
@@ -183,24 +202,22 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.appendChild(confirmationPopup);
 
-    bookingButtons.forEach(button => {
-        let isBooked = false;
+    const showWarningPopup = () => {
+        if (warningPopup.style.display === 'flex') return;
+        warningPopup.style.display = 'flex';
+        setTimeout(() => {
+            warningPopup.classList.add('active');
+        }, 10);
+    };
 
-        button.addEventListener('click', function() {
-            if (!isBooked) {
-                button.innerHTML = `
-                    <i class="ri-check-line"></i> Berhasil Booking
-                `;
-                button.classList.add('booked');
-                isBooked = true;
-            } else {
-                confirmationPopup.style.display = 'flex';
-                setTimeout(() => {
-                    confirmationPopup.classList.add('active');
-                }, 10);
-            }
-        });
-    });
+    const closeWarningPopup = () => {
+        warningPopup.classList.add('closing');
+        setTimeout(() => {
+            warningPopup.classList.remove('closing');
+            warningPopup.classList.remove('active');
+            warningPopup.style.display = 'none';
+        }, 300);
+    };
 
     const closeConfirmationPopup = () => {
         confirmationPopup.classList.add('closing');
@@ -211,21 +228,50 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     };
 
-    confirmationPopup.querySelector('.popup-btn-cancel').addEventListener('click', () => {
-        closeConfirmationPopup();
+    warningPopup.querySelector('.popup-btn').addEventListener('click', closeWarningPopup);
+    warningPopup.addEventListener('click', (e) => {
+        if (e.target === warningPopup) closeWarningPopup();
     });
 
+    const bookingButtons = document.querySelectorAll('.sviki-btn-book');
+    bookingButtons.forEach(button => {
+        button.isBooked = false;
+
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const form = this.closest('form');
+            const allInputs = form ? Array.from(form.querySelectorAll('input, select')).every(input => input.value.trim() !== '') : true;
+
+            if (!allInputs) {
+                showWarningPopup();
+                return;
+            }
+
+            if (!this.isBooked) {
+                this.innerHTML = `
+                    <i class="ri-check-line"></i> Berhasil Booking
+                `;
+                this.classList.add('booked');
+                this.isBooked = true;
+            } else {
+                confirmationPopup.style.display = 'flex';
+                confirmationPopup.currentButton = this;
+                setTimeout(() => {
+                    confirmationPopup.classList.add('active');
+                }, 10);
+            }
+        });
+    });
+
+    confirmationPopup.querySelector('.popup-btn-cancel').addEventListener('click', closeConfirmationPopup);
+
     confirmationPopup.querySelector('.popup-btn-confirm').addEventListener('click', () => {
-        const bookedButton = document.querySelector('.sviki-btn-book.booked');
-        if (bookedButton) {
-            bookedButton.innerHTML = `
+        if (confirmationPopup.currentButton) {
+            confirmationPopup.currentButton.innerHTML = `
                 <i class="ri-calendar-check-line"></i> Booking Sekarang
             `;
-            bookedButton.classList.remove('booked');
-            const buttonInstance = bookingButtons[Array.from(bookingButtons).indexOf(bookedButton)];
-            if (buttonInstance) {
-                buttonInstance.isBooked = false;
-            }
+            confirmationPopup.currentButton.classList.remove('booked');
+            confirmationPopup.currentButton.isBooked = false;
         }
         closeConfirmationPopup();
     });
