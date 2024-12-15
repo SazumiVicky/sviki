@@ -866,6 +866,7 @@ body {
 }
 
 .form-group {
+    position: relative;
     margin-bottom: 1.5rem;
 }
 
@@ -876,6 +877,7 @@ body {
 }
 
 .input-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     border: var(--neo-border);
@@ -1195,4 +1197,101 @@ body {
 .sviki-price small {
     color: #666;
     font-size: 0.9rem;
+}
+
+.destination-suggestions {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid rgba(26, 26, 26, 0.1);
+    border-radius: 12px;
+    margin-top: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.suggestion-item:not(:last-child) {
+    border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+}
+
+.suggestion-item i {
+    color: #4ADE80;
+    font-size: 1.2rem;
+}
+
+.suggestion-content {
+    flex: 1;
+}
+
+.suggestion-name {
+    font-weight: 500;
+    color: #1A1A1A;
+    margin-bottom: 2px;
+}
+
+.suggestion-location {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.suggestion-item:hover,
+.suggestion-item:active {
+    background-color: #F8F9FA;
+}
+
+.destination-suggestions::-webkit-scrollbar {
+    width: 6px;
+}
+
+.destination-suggestions::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.destination-suggestions::-webkit-scrollbar-thumb {
+    background: #E0E0E0;
+    border-radius: 3px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.destination-suggestions.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .destination-suggestions {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 4px;
+    }
+}
+
+@media (min-width: 769px) {
+    .destination-suggestions {
+        width: 100%;
+    }
 }

@@ -340,13 +340,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const html = suggestions.map(dest => `
                 <div class="suggestion-item">
                     <i class="ri-map-pin-line"></i>
-                    <span>${dest.name}</span>
+                    <div class="suggestion-content">
+                        <div class="suggestion-name">${dest.name}</div>
+                        <div class="suggestion-location">${dest.location}</div>
+                    </div>
                 </div>
             `).join('');
             
             suggestionBox.innerHTML = html;
+            suggestionBox.classList.add('show');
             suggestionBox.style.display = 'block';
         } else {
+            suggestionBox.classList.remove('show');
             suggestionBox.style.display = 'none';
         }
     }
@@ -354,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
     suggestionBox.addEventListener('click', function(e) {
         const item = e.target.closest('.suggestion-item');
         if (item) {
-            const selectedName = item.querySelector('span').textContent;
+            const selectedName = item.querySelector('div > div').textContent;
             searchInput.value = selectedName;
             suggestionBox.style.display = 'none';
 
@@ -466,4 +471,81 @@ document.querySelector('.sviki-btn-primary').addEventListener('click', function(
             searchDestination();
         }
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const destinationInput = document.getElementById('destination');
+    const suggestionsDiv = document.querySelector('.destination-suggestions');
+    
+    const destinations = [
+        {
+            name: 'Pantai Kuta',
+            location: 'Bali, Indonesia'
+        },
+        {
+            name: 'Borobudur',
+            location: 'Yogyakarta, Indonesia'
+        },
+        {
+            name: 'Gunung Bromo',
+            location: 'Jawa Timur, Indonesia'
+        }
+    ];
+
+    destinationInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        if (searchTerm.length > 0) {
+            const filteredDestinations = destinations.filter(dest => 
+                dest.name.toLowerCase().includes(searchTerm) || 
+                dest.location.toLowerCase().includes(searchTerm)
+            );
+            showSuggestions(filteredDestinations);
+        } else {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+
+    function showSuggestions(suggestions) {
+        if (suggestions.length > 0) {
+            const html = suggestions.map(dest => `
+                <div class="suggestion-item">
+                    <i class="ri-map-pin-line"></i>
+                    <div class="suggestion-content">
+                        <div class="suggestion-name">${dest.name}</div>
+                        <div class="suggestion-location">${dest.location}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            suggestionsDiv.innerHTML = html;
+            suggestionsDiv.classList.add('show');
+            suggestionsDiv.style.display = 'block';
+        } else {
+            suggestionsDiv.classList.remove('show');
+            suggestionsDiv.style.display = 'none';
+        }
+    }
+
+    suggestionsDiv.addEventListener('click', function(e) {
+        const item = e.target.closest('.suggestion-item');
+        if (item) {
+            const name = item.querySelector('.suggestion-name').textContent;
+            const location = item.querySelector('.suggestion-location').textContent;
+            destinationInput.value = `${name}, ${location}`;
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.form-group')) {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+
+    destinationInput.addEventListener('search', function() {
+        if (this.value === '') {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
 });
