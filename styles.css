@@ -1173,3 +1173,26 @@ body {
     transform: translate(-4px, -4px);
     box-shadow: 4px 4px 0 #1A1A1A;
 }
+
+.sviki-price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    color: #1A1A1A;
+}
+
+.sviki-price i {
+    color: #4ADE80;
+    font-size: 1.2rem;
+}
+
+.sviki-price span {
+    font-weight: 600;
+}
+
+.sviki-price small {
+    color: #666;
+    font-size: 0.9rem;
+}
